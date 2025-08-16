@@ -1,9 +1,13 @@
+package view;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.BorderFactory;
+
 import java.awt.GridLayout;
 
 public class RegisterAuthorGUI {
@@ -14,6 +18,7 @@ public class RegisterAuthorGUI {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel panel = new JPanel(new GridLayout(4, 2));
+        panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
         JLabel labelId = new JLabel("ID: ");
         JTextField fieldId = new JTextField();

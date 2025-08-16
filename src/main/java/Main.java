@@ -1,5 +1,12 @@
+import view.OpenProgramGUI;
+
+import model.Library;
+
 public class Main {
     public static void main(String[] args) {
-        OpenProgramGUI.openMenu();
+
+        Library library = new Library();
+
+        OpenProgramGUI.openMenu(library);
     }
 }
