@@ -1,7 +1,9 @@
-package model;
+package com.erick.model;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Library {
 
@@ -31,5 +33,10 @@ public class Library {
 
     public List<Loan> listLoans() {
         return loans;
+    }
+
+    public LocalDate formatDate(String str) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LocalDate.parse(str, formatter);
     }
 }

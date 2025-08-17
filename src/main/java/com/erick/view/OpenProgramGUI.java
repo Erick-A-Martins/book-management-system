@@ -1,6 +1,6 @@
-package view;
+package com.erick.view;
 
-import model.Library;
+import com.erick.model.Library;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,10 +19,12 @@ public class OpenProgramGUI {
         JPanel panel = new JPanel(new GridLayout(4, 2));
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
+        JButton availableBooks = new JButton("Livros Disponíveis");
         JButton authorBtn = new JButton("Cadastrar Autor");
         JButton bookBtn = new JButton("Cadastrar Livro");
         JButton closeBtn = new JButton("Sair");
 
+        panel.add(availableBooks);
         panel.add(authorBtn);
         panel.add(bookBtn);
         panel.add(closeBtn);
@@ -30,7 +32,8 @@ public class OpenProgramGUI {
         frame.add(panel);
         frame.setVisible(true);
 
-        authorBtn.addActionListener(e -> RegisterAuthorGUI.openRegisterAuthor());
+        availableBooks.addActionListener(e -> AvailableBooksGUI.openAvailableBooks(library));
+        authorBtn.addActionListener(e -> RegisterAuthorGUI.openRegisterAuthor(library));
         bookBtn.addActionListener(e -> RegisterBookGUI.openRegisterBook(library));
         closeBtn.addActionListener(e -> System.exit(0));
     }

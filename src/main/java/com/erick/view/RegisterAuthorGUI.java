@@ -1,4 +1,4 @@
-package view;
+package com.erick.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,9 +10,12 @@ import javax.swing.BorderFactory;
 
 import java.awt.GridLayout;
 
+import com.erick.model.Library;
+import com.erick.model.Author;
+
 public class RegisterAuthorGUI {
 
-    public static void openRegisterAuthor() {
+    public static void openRegisterAuthor(Library library) {
         JFrame frame = new JFrame("Cadastro de Autor");
         frame.setSize(500, 300);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -26,7 +29,7 @@ public class RegisterAuthorGUI {
         JLabel labelName = new JLabel("Nome:");
         JTextField fieldName = new JTextField();
 
-        JLabel labelBirthDate = new JLabel("Data de nascimento: ");
+        JLabel labelBirthDate = new JLabel("Data de nascimento (DD/MM/AAAA):");
         JTextField fieldBirthDate = new JTextField();
 
         JButton saveButton = new JButton("Salvar");
@@ -44,9 +47,11 @@ public class RegisterAuthorGUI {
         frame.setVisible(true);
 
         saveButton.addActionListener(e -> {
-            String id = fieldId.getText();
+            int id = Integer.parseInt(fieldId.getText());
             String name = fieldName.getText();
             String date = fieldBirthDate.getText();
+
+            library.addAuthor(new Author(id, name, library.formatDate(date)));
 
             JOptionPane.showMessageDialog(frame, "Autor cadastrado \nID: " + id + "\nNome: " + name + "\nData de Nascimento: " + date);
         });

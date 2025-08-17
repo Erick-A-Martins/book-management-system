@@ -1,6 +1,6 @@
-import view.OpenProgramGUI;
+import com.erick.view.OpenProgramGUI;
 
-import model.Library;
+import com.erick.model.Library;
 
 public class Main {
     public static void main(String[] args) {

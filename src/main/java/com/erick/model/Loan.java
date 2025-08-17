@@ -1,4 +1,4 @@
-package model;
+package com.erick.model;
 
 import java.time.LocalDate;
 
@@ -8,6 +8,13 @@ public class Loan {
     private Book borrowedBook;
     private LocalDate loanDate;
     private LocalDate devolutionDate;
+
+    public Loan(int id, Book borrowedBook, LocalDate loanDate, LocalDate devolutionDate) {
+        this.id = id;
+        this.borrowedBook = borrowedBook;
+        this.loanDate = loanDate;
+        this.devolutionDate = devolutionDate;
+    }
 
     public void setId(int id) {
         this.id = id;

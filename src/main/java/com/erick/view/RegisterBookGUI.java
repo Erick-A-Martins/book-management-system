@@ -1,4 +1,4 @@
-package view;
+package com.erick.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,11 +7,14 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 
-import model.Author;
-import model.Library;
+import com.erick.model.Author;
+import com.erick.model.Library;
+import com.erick.model.Book;
+
 import java.util.List;
-
+import java.time.LocalDate;
 import java.awt.GridLayout;
 
 public class RegisterBookGUI {
@@ -31,12 +34,12 @@ public class RegisterBookGUI {
         JTextField fieldName = new JTextField();
 
         JLabel labelAuthors = new JLabel("Autores: ");
-        JComboBox<String> authors = new JComboBox<>();
+        JComboBox<Author> authors = new JComboBox<>();
 
         List<Author> authorsList = library.listAuthors();
 
         for(Author author : authorsList) {
-            authors.addItem(author.getName());
+            authors.addItem(author);
         }
 
         JButton saveBtn = new JButton("Salvar");
@@ -53,7 +56,16 @@ public class RegisterBookGUI {
         frame.add(panel);
         frame.setVisible(true);
 
+        saveBtn.addActionListener(e -> {
+            int id = Integer.parseInt(fieldId.getText());
+            String name = fieldName.getText();
+            Author author = (Author) authors.getSelectedItem();
+            LocalDate registerDate = LocalDate.now();
 
+            library.addBook(new Book(id, name, author, true, registerDate, registerDate));
+
+            JOptionPane.showMessageDialog(frame, "Livro cadastrado: \n ID: " + id + "\nNome: " + name + "\nAutor: " + author.getName() + "\nData de Registro: " + registerDate + "\nData de atualização: " + registerDate);
+        });
 
     }
 }

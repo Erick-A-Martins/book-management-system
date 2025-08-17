@@ -1,4 +1,4 @@
-package model;
+package com.erick.model;
 
 import java.time.LocalDate;
 
@@ -36,5 +36,10 @@ public class Author {
 
     public LocalDate getBirthDate() {
         return birthDate;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
